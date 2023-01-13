@@ -434,7 +434,7 @@ static ssize_t zip_entry_mark(struct zip_t *zip,
                               struct zip_entry_mark_t *entry_mark,
                               const ssize_t n, char *const entries[],
                               const size_t len) {
-  mz_uint i = 0;
+  ssize_t i = 0;
   ssize_t err = 0;
   if (!zip || !entry_mark || !entries) {
     return ZIP_ENOINIT;
@@ -463,7 +463,7 @@ static ssize_t zip_entry_mark(struct zip_t *zip,
       entry_mark[i].type = MZ_KEEP;
     }
 
-    if (!mz_zip_reader_file_stat(&zip->archive, i, &file_stat)) {
+    if (!mz_zip_reader_file_stat(&zip->archive, (mz_uint)i, &file_stat)) {
       return ZIP_ENOENT;
     }
 
