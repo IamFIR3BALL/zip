@@ -434,7 +434,7 @@ static ssize_t zip_entry_mark(struct zip_t *zip,
                               struct zip_entry_mark_t *entry_mark,
                               const ssize_t n, char *const entries[],
                               const size_t len) {
-  ssize_t i = 0;
+  mz_uint i = 0;
   ssize_t err = 0;
   if (!zip || !entry_mark || !entries) {
     return ZIP_ENOINIT;
