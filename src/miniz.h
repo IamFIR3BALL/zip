@@ -224,6 +224,7 @@
  * reasonably fast (and don't involve compiler generated calls to helper
  * functions). */
 #define MINIZ_HAS_64BIT_REGISTERS 1
+#define MINIZ_DISABLE_ZIP_READER_CRC32_CHECKS
 #else
 #define MINIZ_HAS_64BIT_REGISTERS 0
 #endif
