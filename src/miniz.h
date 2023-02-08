@@ -5924,7 +5924,10 @@ static size_t mz_zip_file_read_func(void *pOpaque, mz_uint64 file_ofs,
        (MZ_FSEEK64(pZip->m_pState->m_pFile, (mz_int64)file_ofs, SEEK_SET))))
     return 0;
 
-  return MZ_FREAD(pBuf, 1, n, pZip->m_pState->m_pFile);
+  int fno = fileno(pZip->m_pState->m_pFile);
+  return read(fno, pBuf, n);
+
+  //return MZ_FREAD(pBuf, 1, n, pZip->m_pState->m_pFile);
 }
 
 mz_bool mz_zip_reader_init_file(mz_zip_archive *pZip, const char *pFilename,
